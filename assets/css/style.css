@@ -1,0 +1,156 @@
+/* Psicóloga Adriana Beserra: estilos complementares ao Tailwind (CDN) */
+:root {
+  --paper: #FBF7F2;
+  --sand: #EAD7C8;
+  --sand-soft: #F4EAE1;
+  --sand-deep: #D1B198;
+  --bronze: #A47F64;
+  --bronze-dark: #7C573C;
+  --ink: #2F2118;
+  --ink-soft: #5B4838;
+  --google-star: #FBBC04;
+  --ease: cubic-bezier(.22, .8, .24, 1);
+}
+
+html { scroll-padding-top: 5.5rem; }
+body { text-rendering: optimizeLegibility; }
+::selection { background: var(--sand-deep); color: var(--ink); }
+
+:focus-visible { outline: 3px solid var(--bronze-dark); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--sand); }
+
+.skip-link { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--ink); color: var(--paper); padding: .75rem 1rem; border-radius: .5rem; }
+.skip-link:focus { left: 8px; }
+
+/* ---------- Header ---------- */
+.site-header { background: rgba(251, 247, 242, .0); transition: background .3s var(--ease), box-shadow .3s var(--ease), backdrop-filter .3s; }
+.site-header.is-scrolled { background: rgba(251, 247, 242, .92); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(209, 177, 152, .5); }
+.nav-link { position: relative; padding: .5rem 0; font-size: .95rem; font-weight: 500; color: var(--ink-soft); transition: color .2s; }
+.nav-link::after { content: ""; position: absolute; left: 0; right: 0; bottom: .1rem; height: 2px; background: var(--bronze); transform: scaleX(0); transform-origin: left; transition: transform .35s var(--ease); }
+.nav-link:hover, .nav-link:focus-visible { color: var(--ink); }
+.nav-link:hover::after, .nav-link:focus-visible::after { transform: scaleX(1); }
+.mobile-link { display: block; padding: .9rem 0; font-family: "Bodoni Moda", Georgia, serif; font-size: 1.5rem; border-bottom: 1px solid var(--sand); transition: color .2s, padding-left .25s var(--ease); }
+.mobile-link:hover { color: var(--bronze-dark); padding-left: .5rem; }
+
+/* ---------- Botões ---------- */
+.btn { white-space: nowrap; display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 3rem; padding: .75rem 1.5rem; border-radius: 999px; font-weight: 600; font-size: .98rem; line-height: 1.2; transition: transform .25s var(--ease), background-color .25s, color .25s, box-shadow .25s, border-color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn svg { transition: transform .25s var(--ease); }
+.btn:hover svg { transform: translateX(3px); }
+.btn-lg { min-height: 3.4rem; padding: .9rem 1.9rem; font-size: 1.05rem; }
+.btn-primary { background: var(--bronze-dark); color: #fff; box-shadow: 0 8px 22px -10px rgba(124, 87, 60, .8); }
+.btn-primary:hover { background: var(--ink); box-shadow: 0 14px 28px -12px rgba(47, 33, 24, .7); }
+.btn-ghost { border: 1.5px solid var(--sand-deep); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--bronze-dark); background: #fff; }
+.btn-light { border: 1.5px solid rgba(234, 215, 200, .45); color: var(--paper); }
+.btn-light:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.btn-sand { background: var(--sand); color: var(--ink); }
+.btn-sand:hover { background: #fff; }
+
+/* ---------- Tipografia de seção ---------- */
+.section { padding-block: 6rem; }
+@media (min-width: 1024px) { .section { padding-block: 9rem; } }
+.section-title { font-family: "Bodoni Moda", Georgia, serif; font-weight: 500; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -.01em; color: var(--ink); }
+
+/* ---------- Hero ---------- */
+.arch { aspect-ratio: 3 / 4; border-radius: 999px 999px 28px 28px; overflow: hidden; box-shadow: 0 40px 70px -40px rgba(47, 33, 24, .55); position: relative; }
+.arch-back { position: absolute; inset: 0; transform: translate(22px, 22px); border-radius: 999px 999px 28px 28px; background: var(--sand); }
+.hero-in { opacity: 0; transform: translateY(22px); animation: rise .9s var(--ease) forwards; animation-delay: var(--d, 0ms); }
+.hero-arch { clip-path: inset(100% 0 0 0 round 999px 999px 28px 28px); animation: unveil 1.3s var(--ease) .15s forwards; }
+@keyframes rise { to { opacity: 1; transform: none; } }
+@keyframes unveil { to { clip-path: inset(0 0 0 0 round 999px 999px 28px 28px); } }
+
+/* ---------- Imagens ---------- */
+.img-frame { overflow: hidden; border-radius: 28px; box-shadow: 0 30px 60px -38px rgba(47, 33, 24, .5); }
+.img-frame img { transition: transform 1.2s var(--ease); }
+.img-frame:hover img { transform: scale(1.04); }
+
+/* ---------- Serviços ---------- */
+.service-row { display: block; padding: 2.25rem .25rem; transition: background-color .3s, padding .35s var(--ease); }
+@media (min-width: 640px) { .service-row { padding: 2.75rem 1rem; } }
+.service-row:hover { background: rgba(255, 255, 255, .6); padding-left: 1.75rem; }
+.service-cta { display: inline-flex; align-items: center; gap: .5rem; margin-top: 1.4rem; font-weight: 600; color: var(--bronze-dark); }
+.service-cta svg { transition: transform .3s var(--ease); }
+.service-row:hover .service-cta svg { transform: translateX(6px); }
+
+.topic { padding: 1.9rem; border-radius: 24px; background: var(--paper); border: 1px solid rgba(209, 177, 152, .55); transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .3s; }
+.topic:hover { transform: translateY(-6px); border-color: var(--bronze); box-shadow: 0 26px 40px -30px rgba(47, 33, 24, .5); }
+.topic h4 { font-family: "Bodoni Moda", Georgia, serif; font-size: 1.65rem; font-weight: 500; line-height: 1.15; }
+.topic p { margin-top: .9rem; line-height: 1.65; color: var(--ink-soft); }
+
+/* ---------- Planos ---------- */
+.plan { display: flex; flex-direction: column; gap: 1rem; padding: 2.2rem; border-radius: 28px; border: 1px solid rgba(234, 215, 200, .22); background: rgba(255, 255, 255, .03); transition: transform .35s var(--ease), border-color .3s, background-color .3s; }
+.plan:hover { transform: translateY(-6px); border-color: rgba(234, 215, 200, .6); }
+.plan-featured { background: rgba(234, 215, 200, .09); border-color: rgba(234, 215, 200, .45); }
+.plan h3 { font-family: "Bodoni Moda", Georgia, serif; font-size: 2rem; font-weight: 500; line-height: 1.1; color: var(--paper); }
+.plan-length { font-weight: 600; color: var(--sand); }
+.plan-text { line-height: 1.65; color: rgba(234, 215, 200, .88); margin-bottom: 1.2rem; }
+.plan-track { height: 6px; border-radius: 99px; background: rgba(234, 215, 200, .18); overflow: hidden; margin-bottom: .8rem; }
+.plan-track span { display: block; height: 100%; width: var(--w); border-radius: inherit; background: var(--bronze); transform-origin: left; transition: background-color .3s; }
+.plan:hover .plan-track span { background: var(--sand); }
+.reveal.is-visible .plan-track span, .plan.is-visible .plan-track span { animation: grow 1.2s var(--ease) .2s both; }
+@keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* ---------- Avaliações ---------- */
+.stars { display: inline-flex; gap: 2px; color: var(--google-star); }
+.stars svg { width: 18px; height: 18px; }
+.stars-lg svg { width: 22px; height: 22px; }
+.google-badge { display: inline-flex; align-items: center; gap: 1rem; padding: .9rem 1.5rem; border-radius: 999px; border: 1.5px solid var(--sand-deep); background: #fff; transition: transform .25s var(--ease), box-shadow .25s, border-color .25s; }
+.google-badge:hover { transform: translateY(-3px); border-color: var(--bronze-dark); box-shadow: 0 18px 30px -20px rgba(47, 33, 24, .6); }
+
+.reviews { column-gap: 1.5rem; columns: 1; }
+@media (min-width: 700px) { .reviews { columns: 2; } }
+@media (min-width: 1100px) { .reviews { columns: 3; } }
+.review { break-inside: avoid; margin: 0 0 1.5rem; padding: 1.75rem; border-radius: 22px; background: #fff; border: 1px solid rgba(209, 177, 152, .5); transition: transform .3s var(--ease), box-shadow .3s; }
+.review:hover { transform: translateY(-4px); box-shadow: 0 24px 36px -28px rgba(47, 33, 24, .55); }
+.review-head { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem; }
+.review-name { font-weight: 600; line-height: 1.2; }
+.review-date { font-size: .85rem; color: var(--ink-soft); }
+.review-g { width: 22px; height: 22px; margin-left: auto; }
+.avatar { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--c); color: #fff; font-weight: 600; font-size: 1.1rem; }
+.review .stars { margin-bottom: .8rem; }
+.review blockquote { line-height: 1.65; color: var(--ink); }
+
+/* ---------- FAQ ---------- */
+.faq details { border-bottom: 1px solid rgba(209, 177, 152, .7); }
+.faq details:first-child { border-top: 1px solid rgba(209, 177, 152, .7); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.5rem 0; cursor: pointer; list-style: none; font-family: "Bodoni Moda", Georgia, serif; font-size: 1.45rem; line-height: 1.25; transition: color .2s; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 50%; border: 1.5px solid var(--sand-deep); font-family: "Instrument Sans", sans-serif; font-size: 1.4rem; transition: transform .35s var(--ease), background-color .25s, color .25s; }
+.faq summary:hover { color: var(--bronze-dark); }
+.faq summary:hover::after { background: var(--sand); }
+.faq details[open] summary::after { transform: rotate(45deg); background: var(--bronze-dark); border-color: var(--bronze-dark); color: #fff; }
+.faq details > p { padding: 0 3rem 1.5rem 0; max-width: 42rem; line-height: 1.7; color: var(--ink-soft); animation: fade .4s var(--ease); }
+.faq-link { display: inline-flex; align-items: center; gap: .5rem; margin: -.25rem 0 1.6rem; font-weight: 600; color: var(--bronze-dark); transition: gap .25s var(--ease), color .2s; }
+.faq-link:hover { gap: .8rem; color: var(--ink); }
+@keyframes fade { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Mapa ---------- */
+.map-frame { overflow: hidden; border-radius: 28px; aspect-ratio: 4 / 3; background: var(--sand); box-shadow: 0 30px 60px -38px rgba(47, 33, 24, .5); }
+.map-frame iframe { width: 100%; height: 100%; border: 0; filter: saturate(.8) sepia(.12); }
+
+/* ---------- Footer ---------- */
+.footer-title { font-family: "Bodoni Moda", Georgia, serif; font-size: 1.35rem; color: var(--paper); }
+.footer-link { transition: color .2s; }
+.footer-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+.social { display: grid; place-items: center; width: 2.9rem; height: 2.9rem; border-radius: 50%; border: 1.5px solid rgba(234, 215, 200, .35); color: var(--sand); transition: transform .25s var(--ease), background-color .25s, color .25s, border-color .25s; }
+.social:hover { transform: translateY(-3px); background: var(--sand); color: var(--ink); border-color: var(--sand); }
+
+/* ---------- WhatsApp flutuante ---------- */
+.wa-float { position: fixed; right: 1rem; bottom: 1rem; z-index: 40; display: grid; place-items: center; width: 3.7rem; height: 3.7rem; border-radius: 50%; background: #1f8f4e; color: #fff; box-shadow: 0 14px 30px -10px rgba(31, 143, 78, .8); transition: transform .25s var(--ease), background-color .25s; }
+.wa-float:hover { transform: scale(1.08); background: #187a41; }
+@media (min-width: 640px) { .wa-float { right: 1.75rem; bottom: 1.75rem; } }
+
+/* ---------- Scroll reveal ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-visible { opacity: 1; transform: none; }
+.no-js .reveal, .no-js .hero-in { opacity: 1; transform: none; }
+
+/* ---------- Movimento reduzido ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto !important; }
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0ms !important; transition-duration: .001ms !important; }
+  .hero-in, .reveal { opacity: 1; transform: none; }
+  .hero-arch { clip-path: none; }
+}
